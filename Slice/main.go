@@ -228,8 +228,8 @@ func main() {
 	// To show a example that the backend array is the same
 
 	fmt.Printf("%#v %#v \n", &s1[0], &newSlice[0]) // -> (*int)(0xc0000da060) (*int)(0xc0000da070)
-	newSlice[0] = 500                              // -> [10 20 500 40 50]
-	fmt.Println(s1)
+	newSlice[0] = 500
+	fmt.Println(s1) // -> [10 20 500 40 50]
 
 	fmt.Printf("%#v %#v \n", &s1[0], &newSlice[0])
 
@@ -275,5 +275,11 @@ func main() {
 	dst := make([]int, len(src))
 	nn := copy(dst, src)
 	fmt.Println(src, dst, nn) // => [10 20 30] [10 20 30] 3
+
+	years := []int{2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010}
+	newYears := []int{}
+	newYears = append(years[:3], years[len(years)-3:]...) // it take the first and the last
+
+	fmt.Println(newYears) // => [2000 2001 2002 2008 2009 2010]
 
 }
